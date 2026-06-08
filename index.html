@@ -277,7 +277,7 @@ function renderFlow(c){
   let curDY=null;if(c.dayun){for(const dy of c.dayun.dayun){if(curAge>=dy.ageStart&&curAge<=dy.ageEnd){curDY=dy;break}}}
   const allZhis=[c.yearP.zhiIdx,c.monthP.zhiIdx,c.dayP.zhiIdx];if(c.hourP)allZhis.push(c.hourP.zhiIdx);
   let rows='';for(let offset=-1;offset<=5;offset++){const yr=curY+offset;const age=yr-c.y;const yG=(yr-4)%10;const yZ=(yr-4)%12;const yG2=yG<0?yG+10:yG;const yZ2=yZ<0?yZ+12:yZ;
-    let dyLabel='',inDY=false;if(c.dayun){for(const dy of c.dayun.dayun){if(age>=dy.ageStart&&age<=dy.ageEnd){dyLabel=`${dy.gan}${dy.zhi}运`;inDY=true;break}}else dyLabel='未起运'}
+    let dyLabel='未起运',inDY=false;if(c.dayun){for(const dy of c.dayun.dayun){if(age>=dy.ageStart&&age<=dy.ageEnd){dyLabel=`${dy.gan}${dy.zhi}运`;inDY=true;break}}}
     const ss=getShiShen(c.dayP.ganIdx,yG2);const isCur=offset===0;
     // 流年地支对日支的关系
     const dzRel=zhiRelation(yZ2,c.dayP.zhiIdx);
