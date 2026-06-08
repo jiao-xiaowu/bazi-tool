@@ -644,18 +644,19 @@ function getShiShen(dayGanIdx, otherGanIdx) {
   const otherYang = otherGanIdx % 2 === 0;
   const sameYinYang = dayYang === otherYang;
   
-  // 生克关系: 0=同我 1=生我 2=我生 3=克我 4=我克
+  // 5行相生: 木0→火1→土2→金3→水4→木0
+  // 5行相克: 木0→土2→水4→火1→金3→木0
   let relation;
   if (dayWx === otherWx) {
     relation = 0; // 同我
   } else if ((dayWx + 1) % 5 === otherWx) {
-    relation = 1; // 生我
-  } else if ((dayWx + 4) % 5 === otherWx) { // 我生 = (otherWx + 1) % 5 === dayWx
     relation = 2; // 我生
+  } else if ((dayWx + 4) % 5 === otherWx) {
+    relation = 1; // 生我
   } else if ((dayWx + 2) % 5 === otherWx) {
-    relation = 3; // 克我
-  } else {
     relation = 4; // 我克
+  } else {
+    relation = 3; // 克我
   }
   
   const map = [
